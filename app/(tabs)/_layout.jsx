@@ -2,6 +2,8 @@ import { View, Text, StyleSheet } from 'react-native'
 import * as SystemUI from 'expo-system-ui'
 import React, { useState } from 'react'
 import { Tabs } from 'expo-router'
+import { Ionicons } from "@expo/vector-icons"; 
+
 
 const _layout = () => {
   return (
@@ -15,6 +17,8 @@ const _layout = () => {
                 width: 377,
                 height: 441,
                 flexShrink: 0,
+                
+                
             }}
 />
 <Tabs.Screen
@@ -23,7 +27,7 @@ const _layout = () => {
                 headerStyle:{
                     backgroundColor: '#1E1E1E',
                 },
-                title: "Feed",
+                title: "Home",
                 // headerShown: false,
                 // width: 377,
                 // height: 441,
@@ -46,11 +50,11 @@ const _layout = () => {
             name="blank"
             options={{
                 title: "Blank",
-                fill: "#00ff00",
+                fill: "red",
                 // headerShown: false,
                 // width: 377,
                 // height: 441,
-                // flexShrink: 0,
+                // flexShrink: 0
 
             }}
 />

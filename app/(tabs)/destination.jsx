@@ -4,7 +4,31 @@ import { StyleSheet, View } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 // import { GOOGLE_API_KEY } from "./enviroments";
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
+const destination = () => {
+  const [location, setLocation] = useState('');
+  const navigation = useNavigation();
+  const handleSearch = async () => {
+    try {
+      // Replace with your actual API key
+      const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
+        params: {
+          address: location,
+          key: 'YOUR_GOOGLE_API_KEY' // Replace with your API key
+        }
+      });
+      if (response.data.results.length > 0) {
+        const { lat, lng } = response.data.results[0].geometry.location;
+        navigation.navigate('Map', { latitude: lat, longitude: lng });
+      } else {
+        Alert.alert('No results', 'No location found.');
+      }
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Error', 'Failed to retrieve location.');
+    }
+  };
 
 export default function App() {
   return (
@@ -21,7 +45,6 @@ export default function App() {
     <GooglePlacesAutocomplete
       placeholder='Search'
       onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
         console.log(data, details);
       }}
       query={{

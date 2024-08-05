@@ -7,12 +7,12 @@ const Post = () => {
         <View style={styles.line} />
            <View style={styles.header}>
                 <Image
-                        source={require('../assets/images/patrick.png')}
+                        source={require('../assets/images/anita.png')}
                         style={styles.patrick}
                     />
                     <View>
                         <Text style={{color: 'white', fontWeight: "700", fontSize: 16, marginLeft: 15, marginTop: 4, fontStyle: 'normal'}}>
-                            Awareness
+                            Harassment
                         </Text>
                         {/* <Text style={{color: 'white', fontWeight: "600"}}>
                             2.5 miles away
@@ -24,7 +24,7 @@ const Post = () => {
            </View>
         <View style={{flex: 2}}>
             <ScrollView>
-                <Text style={styles.text2}> C Line train broke down for the next couple hours, just to let you guys know.  </Text>
+                <Text style={styles.text2}> A lady on the 207 bus threw a cup of liquid at me she had gray sweats with holes in it. Be aware.</Text>
             </ScrollView>
         </View>
         <View style={{flex: 0.2}}>

@@ -10,14 +10,15 @@ const CustomButton = ({ title, onPress, buttonStyle, textStyle }) => {
   
   const styles = StyleSheet.create({
     button: {
-      backgroundColor: '#F7B655', // Default button background color
-      paddingVertical: 12,
-      paddingHorizontal: 24,
+      backgroundColor: 'red', // Default button background color
+    //   paddingVertical: 12,
+    //   paddingHorizontal: 0,
       borderRadius: 16,
       marginVertical: 10,
+      marginHorizontal: 170,
     },
     text: {
-      color: '#fff', // Default text color
+      color: 'black', // Default text color
       fontSize: 18,
       fontWeight: 'bold',
       textAlign: 'center'
