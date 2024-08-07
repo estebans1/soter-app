@@ -7,17 +7,21 @@ import Post3 from '../../components/Post3'
 import Post4 from '../../components/Post4'
 import { Ionicons } from "@expo/vector-icons"; 
 import ReportButton from '../../components/ReportButton'
-import { router } from 'expo-router'
+import { useRouter } from 'expo-router'
+import { LinearGradient } from 'expo-linear-gradient'
 
 
 const Feed = () => {
+  const router = useRouter();
+
   return (
-        <View style={styles.containerPost}>
-          <View style={styles.container1}>
-             <ReportButton
-              title="+ Report"
+    <LinearGradient colors={['#3D6876', '#D89734']} style={styles.container}>
+        <View style={styles.button}>
+          <ReportButton
+            title="+ Report"
             onPress={() => router.push('Reports')}
-             />
+          />
+        </View>
             <Text style={styles.label}></Text>
           {/* <Dropdown>
           </Dropdown> */}
@@ -27,25 +31,15 @@ const Feed = () => {
         <Post3></Post3>
         <Post4></Post4>
         </ScrollView>
-          </View>
-        </View>
-
-
+    </LinearGradient>
   )
 }
+///Users/txthackathon/Desktop/soter-app/app/(tabs)/index.jsx
 
 export default Feed
 
 const styles = StyleSheet.create({    
-    containerPost: {
-    flex: 1,
-    // marginTop: 10,
-    // alignItems: 'center',
-    backgroundColor: "#1E1E1E",
+    container: {
+      flex: 1,
     },
-    container1: {
-    // backgroundColor: 'black'
-    // alignItems: 'flex-end'
-    // justifyContent: "flex-end"
-    }
 })

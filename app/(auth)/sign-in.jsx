@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import LoginButton from '../../components/LoginButton';
 import FormField from '../../components/FormField';
 import { router, useRouter } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -11,27 +12,29 @@ const SignIn = () => {
   });
 
   const onSignInPress = () => {
-    router.push('(tabs)')
+    router.push('feed')
   }
 
   return (
+    <LinearGradient colors={['#3D6876', '#D89734']} style={styles.container}>
     <View style={styles.container}>
          {/* <View style={styles.notepad}></View> */}
       <Text style={styles.text}>Welcome to Soter</Text>
       <FormField
         title=""
         value={form.email}
-        placeholder="Enter your email"
+        placeholder="PLease Enter Email"
         handleChangeText={(value) => setForm({ ...form, email: value})}
       />
-      {/* <FormField
-        title="Password"
+      <FormField
+        title=""
         value={form.password}
-        placeholder={(value) => setForm ({...form, password: value})}
-        secureTextEntry
-      /> */}
+        placeholder="Please Enter Password"
+        handleChangeText={(value) => setForm ({...form, password: value})}
+      />
       <LoginButton title="Sign In" onPress={onSignInPress}/>
     </View>
+    </LinearGradient>
   )
 }
 export default SignIn
@@ -39,7 +42,7 @@ export default SignIn
 const styles=StyleSheet.create ({
 container: {
     flex: 1,
-    backgroundColor: '#1B5669',
+    // backgroundColor: '#1B5669',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -57,7 +60,10 @@ container: {
     borderRadius: 5,
   },
   text: {
-    fontSize: 50,
+    fontSize: 90,
+    textAlign: 'center',
+    fontFamily: 'marion-regular',
+    color: '#2D9ABC'
   },
   notepad: {
     width: 377,
