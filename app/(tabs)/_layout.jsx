@@ -45,6 +45,14 @@ const _layout = () => {
                 // flexShrink: 0,
             }}
 />
+<Tabs.Screen
+            name="testpage"
+            options={{
+                title: "TEST",
+                fill: "#00ff00",
+                headerShown: false,
+            }}
+/>
    </Tabs>
   )
 }
