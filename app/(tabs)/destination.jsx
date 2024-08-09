@@ -1,19 +1,16 @@
 import React, { useState }from 'react';
-import { StyleSheet, View, Text, ScrollView, Alert, TextInput} from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { StyleSheet, View, Text, ScrollView, Alert, TextInput, TouchableOpacity} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Collapsible from 'react-native-collapsible';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import GetThere from '../../components/GetThere';
+import NearYou from '../../components/NearYou';
 import axios from 'axios';
+import ToggleButton from '../../components/ToggleButton';
 
 const destination = () => {
   const [location, setLocation] = useState('');
-  const [collapsedA, setCollapsedA] = useState(true);
-  const [collapsedB, setCollapsedB] = useState(true);
-  const [collapsedC, setCollapsedC] = useState(true);
-  const [collapsedD, setCollapsedD] = useState(true);
+  const [showGetThere, setShowGetThere] = useState(false);
   const navigation = useNavigation();
 
   const handleSearch = async () => {
@@ -36,6 +33,12 @@ const destination = () => {
     }
   };
 
+  const toggleComponent = () => {
+    setShowGetThere(!showGetThere);
+  };
+
+  console.log('toggleComponent is a:', typeof toggleComponent);
+
 return (
   <LinearGradient colors={['#3D6876', '#D89734']} style={styles.container}>
     <View style={styles.header}>
@@ -49,9 +52,6 @@ return (
       <Text style={styles.currentLocationText}>Current Loccation</Text>
     </View>
 
-    {/* //Destination title */}
-    {/* <Text style={styles.destinationTitle}>Destination</Text> */}
-
     {/* Destination Input */}
     <View style={styles.searchContainer}>
       <TextInput
@@ -63,104 +63,10 @@ return (
         onSubmitEditing={handleSearch}
       />
     </View>
+
+    <ToggleButton showGetThere={showGetThere} onPress={toggleComponent} />
+    {showGetThere ? <GetThere /> : <NearYou />}
     
-    {/* //Map Section */}
-    <MapView
-      style={styles.map}
-      initialRegion={{
-        latitude: 34.044600,
-        longitude: -118.249270,
-        latitudeDelta: 0.1,
-        longitudeDelta: 0.1,
-      }}
-    >
-      {/* //This is an example Marker */}
-      <Marker
-        coordinate={{
-          latitude: 34.0224,
-          longitude: -118.2851,
-        }}
-        title={"Expo Park"}
-        description={"Exposition park in los angeles"}
-      />
-    </MapView>
-
-    {/* // this is the Train Line Section */}
-    <ScrollView style={styles.scrollContainer}>
-      <Text style={styles.linesHeader}>Lines near you</Text>
-
-      {/* //A Line */}
-      <TouchableOpacity onPress={() => setCollapsedA(!collapsedA)} style={styles.lineItem} >
-        <View style={styles.circleA}>
-          <Text style={styles.circleText}>A</Text>
-        </View>
-        <View style={styles.lineInfo}>
-          <Text style={styles.lineText}>Line A</Text>
-        </View>
-        <Ionicons name={collapsedA ? "chevron-down" : "chevron-up"} size={24} color="white" />
-      </TouchableOpacity>
-      <Collapsible collapsed={collapsedA}>
-      <View style={styles.collapsibleContent}>
-          <Text style={styles.collapsibleText}>Dowtown Long Beach</Text>
-          <Text style={styles.collapsibleText}>Disney Hall</Text>
-          <Text style={styles.collapsibleText}>Arcadia</Text>
-          <Text style={styles.collapsibleText}>Azusa</Text>
-          <Text style={styles.collapsibleText}>Chinatown</Text>
-          <Text style={styles.collapsibleText}>Highland Park</Text>
-          <Text style={styles.collapsibleText}>South Pasadena</Text>
-          <Text style={styles.collapsibleText}>Pasadena</Text>
-        </View>
-      </Collapsible>
-
-      {/* Line B */}
-      <TouchableOpacity onPress={() => setCollapsedB(!collapsedB)} style={styles.lineItem}>
-        <View style={styles.circleB}>
-          <Text style={styles.circleText}>B</Text>
-        </View>
-        <View style={styles.lineInfo}>
-          <Text style={styles.lineText}>Line B</Text>
-        </View>
-        <Ionicons name={collapsedB ? "chevron-down" : "chevron-up"} size={24} color="white" />
-      </TouchableOpacity>
-      <Collapsible collapsed={collapsedB}>
-        <View style={styles.collapsibleContent}>
-          <Text style={styles.collapsibleText}>Line B information</Text>
-        </View>
-      </Collapsible>
-
-      {/* Line C */}
-      <TouchableOpacity onPress={() => setCollapsedC(!collapsedC)} style={styles.lineItem}>
-        <View style={styles.circleC}>
-          <Text style={styles.circleText}>C</Text>
-        </View>
-        <View style={styles.lineInfo}>
-          <Text style={styles.lineText}>Line C</Text>
-        </View>
-        <Ionicons name={collapsedC ? "chevron-down" : "chevron-up"} size={24} color="white" />
-      </TouchableOpacity>
-      <Collapsible collapsed={collapsedC}>
-        <View style={styles.collapsibleContent}>
-          <Text style={styles.collapsibleText}>Line C information</Text>
-        </View>
-      </Collapsible>
-
-      {/* Line D */}
-      <TouchableOpacity onPress={() => setCollapsedD(!collapsedD)} style={styles.lineItem}>
-        <View style={styles.circleD}>
-          <Text style={styles.circleText}>D</Text>
-        </View>
-        <View style={styles.lineInfo}>
-          <Text style={styles.lineText}>Line D</Text>
-        </View>
-        <Ionicons name={collapsedD ? "chevron-down" : "chevron-up"} size={24} color="white" />
-      </TouchableOpacity>
-      <Collapsible collapsed={collapsedD}>
-        <View style={styles.collapsibleContent}>
-          <Text style={styles.collapsibleText}>Line D information</Text>
-        </View>
-      </Collapsible>
-
-    </ScrollView>
   </LinearGradient>
   );
 };
@@ -205,7 +111,10 @@ const styles = StyleSheet.create({
     // backgroundColor: '#2D2D2D'
   },
   searchContainer: {
-    marginHorizontal: 40,
+    marginHorizontal: 45,
+    width: 200,
+    position: 'absolute',
+    paddingTop: 140
   },
   input: {
     borderColor: '#888',
@@ -213,12 +122,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 10,
     padding: 10,
-  },
-  map: {
-    height: 200,
-    margin: 10,
-    borderRadius: 10,
-    overflow: 'hidden',
   },
   scrollContainer: {
     flex: 1,

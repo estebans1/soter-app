@@ -1,54 +1,54 @@
-import { View, Image, Text, StyleSheet, ScrollView } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import React from "react";
 
-const Post = () => {
+const ReportCard = () => {
   return (
     <View style={styles.container}>
-        <View style={styles.line} />
-           <View style={styles.header}>
-                <Image
-                        source={require('../assets/images/Aaron.png')}
-                        style={styles.patrick}
-                    />
-                    <View>
-                        <Text style={{color: 'white', fontWeight: "700", fontSize: 16, marginLeft: 15, marginTop: 4, fontStyle: 'normal'}}>
-                            Assualt
-                        </Text>
-                        {/* <Text style={{color: 'white', fontWeight: "600"}}>
-                            2.5 miles away
-                        </Text> */}
-                    </View>
-                {/* <View style={styles.container1}>
-                        <Text style={styles.text}>C Line</Text>
-                </View> */}
-           </View>
-        <View style={{flex: 2}}>
-            <ScrollView>
-                <Text style={styles.text2}> Some random old guy wouldn't stop sniffing me. </Text>
-            </ScrollView>
-        </View>
-        <View style={{flex: 0.2}}>
+      <View style={styles.line} />
+      <View style={styles.header}>
         <Image
-                source={require('../assets/images/Shield.png')}
-                style={styles.shield}
-             />    
-            
-            </View>
-            <View style={styles.bottomContainer}>
-            <View style={styles.line2} />
-            <Text style={styles.text1}> Leave a reply</Text>
-            {/* <Image
-                source={require('../assets/images/Shield.png')}
-                style={styles.shield}
-             />    
-            
-            </View> */}
-        </View>   
-     </View>
-  )
-}
+          source={require("../assets/images/patrick.png")}
+          style={styles.patrick}
+        />
+        <View>
+          <Text
+            style={{
+              color: "white",
+              fontWeight: "700",
+              fontSize: 16,
+              marginLeft: 15,
+              marginTop: 4,
+              fontStyle: "normal",
+            }}
+          >
+            Awareness
+          </Text>
+        </View>
+      </View>
+      <View style={{ flex: 2 }}>
+        <ScrollView>
+          <Text style={styles.text2}>
+            {" "}
+            C Line train broke down for the next couple hours, just to let you
+            guys know.{" "}
+          </Text>
+        </ScrollView>
+      </View>
+      <View style={{ flex: 0.2 }}>
+        <Image
+          source={require("../assets/images/Shield.png")}
+          style={styles.shield}
+        />
+      </View>
+      <View style={styles.bottomContainer}>
+        <View style={styles.line2} />
+        <Text style={styles.text1}> Leave a reply</Text>
+      </View>
+    </View>
+  );
+};
 
-export default Post
+export default ReportCard;
 
 const styles = StyleSheet.create ({
     container: {
@@ -126,7 +126,7 @@ const styles = StyleSheet.create ({
 
     shield: {
         resizeMode:'contain',
-        marginLeft: 298,
+        marginLeft: 295,
         marginTop: -65,
         width: 35,
         height: 200,

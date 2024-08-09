@@ -126,8 +126,10 @@ const styles = StyleSheet.create ({
 
     shield: {
         resizeMode:'contain',
-        marginLeft: 290,
-        marginTop: -37,
+        marginLeft: 298,
+        marginTop: -65,
+        width: 35,
+        height: 200,
 
 
     },

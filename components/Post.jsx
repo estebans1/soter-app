@@ -126,10 +126,10 @@ const styles = StyleSheet.create ({
 
     shield: {
         resizeMode:'contain',
-        marginLeft: 290,
-        marginTop: -37,
-
-
+        marginLeft: 295,
+        marginTop: -65,
+        width: 35,
+        height: 200
     },
     bottomContainer: {
         // marginTop: -2,

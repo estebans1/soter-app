@@ -16,6 +16,7 @@ const Feed = () => {
 
   return (
     <LinearGradient colors={['#3D6876', '#D89734']} style={styles.container}>
+      <Text style={styles.textReport}>Reports</Text>
         <View style={styles.button}>
           <ReportButton
             title="+ Report"
@@ -26,10 +27,10 @@ const Feed = () => {
           {/* <Dropdown>
           </Dropdown> */}
         <ScrollView>
-        <Post></Post>
-        <Post2></Post2>
-        <Post3></Post3>
-        <Post4></Post4>
+        <Post />
+        <Post2 />
+        <Post3 />
+        <Post4 />
         </ScrollView>
     </LinearGradient>
   )
@@ -42,4 +43,14 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
+    button: {
+    justifyContent: 'flex-end',
+    textAlign: 'right'
+    },
+    textReport: {
+      fontSize: 45,
+      color: 'white',
+      textAlign: 'center',
+      marginTop: 60,
+    }
 })

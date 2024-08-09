@@ -1,23 +1,3 @@
-// import { View, Text, TextInput } from 'react-native'
-// import React from 'react'
-
-// const FormField = ({ title, value, placeholder, handleChangeText }) => {
-//   return (
-//     <View>
-//       <Text>{title}</Text>
-//       <View>
-//         <TextInput
-//             value={value}
-//             placeholder="What would you like to report?"
-//             placeholderTextColor="#7b7b8b"
-//             onChangeText={handleChangeText}
-//         />
-//       </View>
-//     </View>
-//   )
-// }
-
-// export default FormField
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React from 'react'
 
@@ -46,7 +26,10 @@ const styles = StyleSheet.create({
     color: '#ED920B',
   },
   input: {
-    height: 47,
+    height: 200,
+    width: 350,
+    textAlign: 'left',
+    paddingBottom: 160,
     borderWidth: 1,
     padding: 10,
     borderRadius: 8,

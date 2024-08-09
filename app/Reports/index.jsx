@@ -2,21 +2,25 @@ import { View, Text, StyleSheet, SafeAreaView, TextInput, } from 'react-native'
 import React, { useState } from 'react'
 import CustomButton from '../../components/CustomButton';
 import FormField from '../../components/FormField';
+import { LinearGradient } from 'expo-linear-gradient';
+import { router } from 'expo-router';
 
 const Reports = () => {
   const onPressCancel =() => {
+    router.push('(tabs)/feed')
     alert("Canceled")
   }
   const onPressPost =() => {
+    router.push('(tabs)/feed')
     alert("Thank you for the report!")
   }
-    const [text, onChangeTrain] = useState('Train Line');
-    const [textWrite, onChangeWrite] = useState('What would you like to report ?')
-    const [number, onChangeTrainSerial] = useState('Train Serial #');
+    const [text, onChangeTrain] = useState('');
+    const [number, onChangeTrainSerial] = useState('');
     const [form, setForm] = useState({
       problem: '',
     })
   return (
+    <LinearGradient colors={['#3D6876', '#D89734']} style={styles.container}>
     <View style={styles.container}>
       <Text style={styles.text}>Report a Problem</Text>
       <View style={styles.containerButton}>
@@ -28,6 +32,7 @@ const Reports = () => {
           <View style={styles.containerWrite}>
             <View style={styles.write}>
               <FormField
+                placeholder="Report a problem"
                 value={form.problem}
                 handleChangeText={(e) => setForm({ ...form, problem: e })}
               />
@@ -38,24 +43,26 @@ const Reports = () => {
               style={styles.input}
               onChangeText={onChangeTrain}
               value={text}
+              placeholder='Train Line'
             />
             <TextInput
               style={styles.input}
               onChangeText={onChangeTrainSerial}
               value={number}
               keyboardType="numeric"
+              placeholder='Train Serial #'
             />
           </View>
       </View>
     </View>
-
+    </LinearGradient>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1E1E1E",
+    // backgroundColor: "#1E1E1E",
 
   },
   containerButton: {
